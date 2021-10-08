@@ -1,70 +1,26 @@
-# hamb
+## ハンバーガーメニュー作成
 
-## Build Setup
+[ハンバーガーメニュー](https://vuetifyjs.com/ja/components/app-bars/)
+[参考](https://yacchi-engineer.com/?p=1010)
 
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
-# vue-test21
+・v-navigation-drawer, v-app-bar, v-footerの3つのコンポーネントが必須
+「v-navigation-drawer」は、サイドナビゲーションを生成する。
+・Vuetifyのコンポーネントは必ずv-appタグで囲む必要がある。
+・サイドメニューは、
+・ハンバーガーメニューは「v-app-bar-nav-icon」タグとして準備されている。
+・「:clipped-left="clipped"」のclippedはboolean。
+　clippedはナビゲーションバーの下に配置する設定。
+　オン、オフの切り替え。clippedはprops。
+「v-navigation-drawer」にclippedを、「v-app-bar」にclipped-leftを設置。
+ データ定義する際は、dataプロパティを使用し、return部分にオブジェクト形式でデータ定義する。
+・サイドバーの中には、v-listでメニューを表示
+・fixedは、position:fixedのスタイルが効き、サイドメニューが画面左側いっぱいに表示することが可能。
+・temporaryはサイドメニューがヘッダーから隠れるのを防ぐ
+・サイドメニューの並び、
+　<v-list>
+　<v-list-item-group>
+　<v-list-item>
+　<v-list-item-title>
+・denseは、margin設定を自動調整してくれる
+・「v-list-item-action」は、「v-list-item」に配置し、表示位置に表す。
+・ハンバーガーメニューを右から表示したい場合は、v-navigation-drawerで、rightを加える。
