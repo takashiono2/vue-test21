@@ -1,0 +1,188 @@
+<template>
+  <v-app-bar app color="white" height="62px" elevation="0">
+    <v-container class="d-flex justify-center">
+      <v-row class="align-center">
+        <!-- メンタロゴ -->
+        <!-- クリックでログイン切り替え -->
+        <nuxt-link to="/">
+          <img
+            class="ml-3 mentaLogo"
+            src="~/static/img/menta_logo.png"
+            alt="Menta logo"
+            @click="isLoggedin = !isLoggedin"
+          />
+        </nuxt-link>
+        <!-- ノートPCメニュー -->
+        <v-list v-if="$vuetify.breakpoint.mdAndUp" dense class="d-flex ml-8">
+          <v-list-item v-for="menu in menus" :key="menu.title" class="pa-0">
+            <v-btn text class="pa-3">
+              <v-icon>{{ menu.icon }}</v-icon>
+              {{ menu.title }}
+            </v-btn>
+          </v-list-item>
+        </v-list>
+        <v-spacer />
+
+        <!-- 検索ボックス -->
+        <v-text-field
+          v-if="$vuetify.breakpoint.mdAndUp"
+          dense
+          filled
+          rounded
+          hide-details
+          placeholder="PHPなどスキル名で検索"
+          background-color="hsl(180, 30%, 96%)"
+          append-icon="mdi-magnify"
+          class="ma-0"
+        />
+        <!-- ログイン -->
+        <nuxt-link to="/signin">
+          <v-btn
+            v-if="!isLoggedin && !$vuetify.breakpoint.xs"
+            rounded
+            outlined
+            class="mx-3"
+          >
+            ログイン
+          </v-btn>
+        </nuxt-link>
+        <!-- 無料登録 -->
+        <nuxt-link to="/signup">
+          <v-btn
+            v-if="!isLoggedin && !$vuetify.breakpoint.xs"
+            id="filled-btn"
+            rounded
+            elevation="0"
+            color="white--text"
+          >
+            無料登録
+          </v-btn>
+        </nuxt-link>
+        <!-- お知らせベル -->
+        <v-btn
+          v-if="isLoggedin && !$vuetify.breakpoint.smAndDown"
+          text
+          fab
+          small
+          class="mx-2"
+        >
+          <v-icon color="grey lighten-1" size="28px"> mdi-bell-outline </v-icon>
+        </v-btn>
+        <!-- ユーザーアイコン -->
+        <img
+          v-if="isLoggedin && !$vuetify.breakpoint.smAndDown"
+          src="~/static/img/menta_logo.png"
+          alt="User logo"
+          class="ma-0 user-img"
+        />
+
+        <!-- タブレット、スマホ用メニュー -->
+        <v-list v-for="tabletMenu in tabletMenus" :key="tabletMenu">
+          <v-btn
+            v-if="isLoggedin && $vuetify.breakpoint.smAndDown"
+            text
+            x-small
+            class="pa-0 ma-0"
+          >
+            <v-icon>{{ tabletMenu }}</v-icon>
+          </v-btn>
+        </v-list>
+
+        <!-- スマホ用 -->
+        <!-- ログイン -->
+        <nuxt-link to="/signin">
+          <v-btn
+            v-if="!isLoggedin && $vuetify.breakpoint.xs"
+            text
+            small
+            class="text-caption pa-0"
+          >
+            ログイン
+          </v-btn>
+        </nuxt-link>
+        <!-- 登録 -->
+        <nuxt-link to="/signup">
+          <v-btn
+            v-if="!isLoggedin && $vuetify.breakpoint.xs"
+            text
+            small
+            class="text-caption pa-0"
+          >
+            登録
+          </v-btn>
+        </nuxt-link>
+        <!-- ハンバーガーメニュー -->
+        <v-btn
+          v-if="!isLoggedin && $vuetify.breakpoint.xs"
+          text
+          small
+          class="text-caption pa-0"
+        >
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+      </v-row>
+    </v-container>
+  </v-app-bar>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    isLoggedin: false,
+    menus: [
+      { title: 'メンターをさがす', icon: 'mdi-account' },
+      { title: 'プランをさがす', icon: 'mdi-laptop-mac' },
+      { title: 'メンターを募集', icon: 'mdi-hand-right' }
+    ],
+    tabletMenus: [
+      'mdi-magnify',
+      'mdi-hand-right',
+      'mdi-email-outline',
+      'mdi-bell-outline',
+      'mdi-menu'
+    ]
+  })
+}
+</script>
+
+<style lang="scss" scoped>
+@import 'assets/styles/common';
+.mentaLogo {
+  @media (max-width: 452px) {
+    max-width: 70px;
+  }
+  max-width: 158px;
+}
+.v-text-field {
+  max-width: 230px;
+  margin-right: 20px;
+  font-size: 14px;
+  @media (max-width: 1264px) {
+    display: none;
+  }
+}
+.v-btn {
+  color: $MENTA-main-color;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: -1px;
+}
+// 詳細度を上げるためにidにしています
+#filled-btn {
+  background: $MENTA-main-color;
+}
+.user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.row {
+  max-width: 1185px;
+}
+a {
+  text-decoration: none;
+}
+</style>
