@@ -1,33 +1,32 @@
 <template>
   <v-app>
-    <header class="header pc_hyoji mini">
-      <div class="header_inner">
-        <div class="header_inner_head flexbox">
+    <header class="header pc_hyoji">
+      <div class="header_inner flexbox">
+        <div id="nav-drawer" class="header_inner_head flexbox">
           <v-app-bar
             color="primary"
             :clipped-left="clipped"
             fixed
             app
-            class="flexbox"
-            id="nav-drawer"
+
           >
 
           <!-- <v-container> -->
+<div class="flex-container2">
+            <v-toolbar-title id="logo" class="title flexbox">Vuetify</v-toolbar-title>
 
-            <v-toolbar-title class="title flexbox">Vuetify</v-toolbar-title>
+            <v-list dense class="d-flex">
+              <!-- <v-list v-if="$vuetify.breakpoint.mdAndUp" dense class="d-flex ml-8"> -->
 
-                <v-layout class ="flexbox">
-                  <v-list dense class ="flexbox">
-                    <!-- <v-list v-if="$vuetify.breakpoint.mdAndUp" dense class="d-flex ml-8"> -->
-                    <v-list-item v-for="menu in menus" :key="menu.title" class="menu gnav flexbox">
-                      <v-btn text class="menu_item flexbox">
-                        <v-icon class ="flexbox">{{ menu.icon }}</v-icon>
-                          {{ menu.title }}
-                      </v-btn>
-                    </v-list-item>
-                  </v-list>
+                <v-list-item v-for="menu in menus" :key="menu.title" class="pa-0 flexbox">
+                  <v-btn text class="flexbox">
+                    <v-icon class ="menu flexbox">{{ menu.icon }}</v-icon>
+                      {{ menu.title }}
+                  </v-btn>
+                </v-list-item>
 
-                </v-layout>
+            </v-list>
+</div>
           <!-- </v-container> -->
 
           <v-spacer />
@@ -163,10 +162,54 @@ export default {
 </script>
 
 <style>
+header {
+  display: block;
+  border-style: 10px solid;
+  position: sticky;
+  padding: 0 4%;
+  top: 0;
+  background: #fff;
+  transition: all .8s;
+  z-index: 2;
+  position: sticky;
+}
 
-.menu_item{
+@media (max-width: 960px) and (min-width: 699px){
+  .pc_hyoji {
+    display: block!important;
+  }
+}
+@media (max-width: 960px) and (min-width: 699px){
+  header .header_inner{
+    margin-right: auto;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 960px) and (min-width: 699px){
+  header .header_inner #logo{
+    background-color: green;
+    margin-right: auto;
+    padding: 8px 0;
+  }
+}
+
+header .header_inner #logo{
+  margin: 0;
+  line-height: 0;
+}
+
+header .header_inner .menu {
+  font-weight: 600;
+  position: relative;
+}
+
+header .header_inner .flexbox {
   align-items: center;
-  height: 100%;
+}
+
+header .header_inner_head {
+  height: 72px;
 }
 /* @media screen and (max-width: 960px){
   .v-btn__content{
@@ -180,43 +223,93 @@ export default {
   font-size:14px;
 }
 
-header{
- position: sticky;
+.v-btn__content .flexbox{
+  display: flex;
+  flex-wrap: wrap;
 }
 
-header .pc_hyoji{
-  display: block;
+header .flexbox{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header .header .pc_hyoji{
+  display: block!important;
+}
+
+header .flex-container2 #logo{
+  margin: 0;
+  line-height: 0;
+  padding: 8px 40px 8px 0;
+}
+
+header .flex-container2 .title{
+  height: 56px;
+  align-items: center;
+  color: #ff0000;
+  border-style: solid;
 }
 
 #nav-drawer{
   width: 100%;
   align-items: center;
 }
-.auth_buttons{
-  margin-left: auto;
-}
 
-header .header_inner{
+header .header_inner {
   align-items: center;
   height: 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-header .header_inner_head{
-  align-items: center;
-  height: 72px;
+header .header_inner {
+  font-weight: 600;
+  position: relative;
 }
 
-header .header_inner .title{
-  align-items:center;
+@media (max-width: 960px){
+  header .header_inner .menu{
+    overflow-x: auto;
+  }
+}
+
+.v-toolbar__content, .v-toolbar__extension{
   height: 56px;
-  margin:0;
+  align-items: center;
+  display: flex;
+  position: relative;
+  z-index: 0;
+}
+/* @media (max-width: 960px){
+  header .header_inner .flexbox {
+     overflow-x: auto;
+  }
+} */
+
+  /* header .header_inner .flexbox{
+color: red;
+  align-items: center;
+
+}  */
+
+/* header .header_inner .title{
+  /* align-items:center;
+  height: 56px; */
+  /* margin:0;
   line-height:0;
   padding:8px 40px 8px 0;
-}
+} */
 
 nav{
   position: fixed;
   right: 90px;
+}
+
+header .header_inner .auth_buttons{
+  margin-left: auto;
+  color: red;
+  border-style: solid;
 }
 /* .naviflex{
   margin-right:200px;
@@ -227,6 +320,11 @@ nav{
   flex-wrap: wrap;
 }
 
+.flex-container2{
+  height: 56px;
+  flex-wrap: wrap;
+  display: flex; /*--flexを指定--*/
+}
 
 /* 以下、body要素 */
  /*--親要素--*/
