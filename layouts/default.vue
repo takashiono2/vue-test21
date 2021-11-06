@@ -17,14 +17,14 @@
 
             <v-list dense class="d-flex">
               <!-- <v-list v-if="$vuetify.breakpoint.mdAndUp" dense class="d-flex ml-8"> -->
-
+<div class="navmenu">
                 <v-list-item v-for="menu in menus" :key="menu.title" class="pa-0 flexbox">
                   <v-btn text class="flexbox">
-                    <v-icon class ="menu flexbox">{{ menu.icon }}</v-icon>
+                    <v-icon class ="flexbox">{{ menu.icon }}</v-icon>
                       {{ menu.title }}
                   </v-btn>
                 </v-list-item>
-
+</div>
             </v-list>
 </div>
           <!-- </v-container> -->
@@ -193,7 +193,7 @@ header {
     padding: 8px 0;
   }
 }
-
+/* ここはいる */
 header .header_inner #logo{
   margin: 0;
   line-height: 0;
@@ -203,7 +203,7 @@ header .header_inner .menu {
   font-weight: 600;
   position: relative;
 }
-
+/* ここはいる */
 header .header_inner .flexbox {
   align-items: center;
 }
@@ -242,7 +242,7 @@ header .flex-container2 #logo{
   line-height: 0;
   padding: 8px 40px 8px 0;
 }
-
+/* ここの高さが重要 */
 header .flex-container2 .title{
   height: 56px;
   align-items: center;
@@ -267,20 +267,64 @@ header .header_inner {
   font-weight: 600;
   position: relative;
 }
-
-@media (max-width: 960px){
+/* スクロールするのに必要 */
+/* @media (max-width: 960px){
   header .header_inner .menu{
+    color: #ff0000;
+    border-style: solid;
+    display: flex;
+    overflow-x:　scroll;
+  }
+} */
+@media (max-width: 600px){
+  .v-sheet.v-list:not(.v-sheet--outlined) > .navmenu{
+    display: flex !important;
     overflow-x: auto;
+    /* overflow-x:　scroll !important; */
+    border-style: solid;
+    border-color: red;
+    width: 600px;
   }
 }
 
+  /* .v-sheet.v-list:not(.v-sheet--outlined) {
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-color: green;
+    width: auto;
+  } */
+
+/* @media (max-width: 600px){
+  .flex-container2 > .v-sheet.v-list:not(.v-sheet--outlined){
+    display: flex;
+    overflow-x:　scroll;
+    border-style: solid;
+    border-color: red;
+  }
+} */ */
+
+/* header .flex-container2 {
+  display: flex;
+  overflow-x:　scroll;
+} */
+/* .menu-oya{
+  display: flex;
+  overflow-x:　scroll;
+  border-style: solid;
+  border-color: blue;
+} */
+/* .menu-ko{
+
+} */
+/*
 .v-toolbar__content, .v-toolbar__extension{
   height: 56px;
   align-items: center;
   display: flex;
   position: relative;
   z-index: 0;
-}
+} */
 /* @media (max-width: 960px){
   header .header_inner .flexbox {
      overflow-x: auto;
